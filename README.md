@@ -11,6 +11,7 @@ This gets added when running rake db:setup_initial.  Will only add if there are 
 so this can be run at any time afterwards too.
 
 Username: admin@admin.com
+
 Password: test1234
 
 ## Features
