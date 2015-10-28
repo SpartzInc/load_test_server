@@ -1,15 +1,14 @@
 # LoadTestServer
 
 LoadTestServer is a Rails app that allows you to create, run, and store results for load tests.
-This tool helps test web services under designed stress.
 
-We built this tool so it could automatically be loaded up into Docker.  There is no need to use if you do not like, 
-but works very nicely within Docker.
+We added Docker support for this, to help ease any differences in platforms.  This Rails app can operate
+with or without Docker.  Just make sure to provide the correct environment variables when trying to run without.
   
 ## Initial Login
 
 This gets added when running rake db:setup_initial.  Will only add if there are no users in the database,
-so this can be run at any time afterwards too/
+so this can be run at any time afterwards too.
 
 Username: admin@admin.com
 Password: test1234
