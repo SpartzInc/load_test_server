@@ -88,5 +88,5 @@ Password: test1234
   
 #Contributors
 
-1. Mike Blatter
-2. Erik Stockmeier
+1. [Mike Blatter](https://github.com/mikeblatter)
+2. [Erik Stockmeier](https://github.com/erikdstock)
