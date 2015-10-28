@@ -31,7 +31,7 @@ listen File.expand_path(ENV['UNICORN_SOCK']), :backlog => 64
 timeout 60
 
 # feel free to point this anywhere accessible on the filesystem
-pid File.expand_path(ENV['UNICORN_PID']), :backlog => 64
+pid File.expand_path(ENV['UNICORN_PID'])
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
