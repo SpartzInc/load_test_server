@@ -1,0 +1,55 @@
+<div class="container">
+  <%= render 'shared/index_action_bar', title: 'Load Tests',
+             new_object_path: new_load_test_path %>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>User Scenario</th>
+      <th>Dimensions</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @load_tests.each do |load_test| %>
+      <tr>
+        <td>
+          <%= truncate load_test.name, :length => 25, :separator => /\w/,
+                       :omission => '...' %>
+        </td>
+        <td>
+          <%= truncate load_test.user_scenario.name, :length => 25, :separator => /\w/,
+                       :omission => '...' %>
+        </td>
+        <td>
+          <%= load_test.load_test_schedules.sum(:duration) %> minutes,
+          <%= load_test.load_test_schedules.maximum(:maximum_virtual_users) %> max users
+        </td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'Show', load_test, :class => 'btn btn-info' %>
+
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Actions <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to 'Edit', edit_load_test_path(load_test) %></li>
+              <li class="divider"></li>
+              <li><%= link_to 'Destroy', load_test_path(load_test), :method => 'delete', data: {confirm: 'Are you sure?'} %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="5">
+        <%= will_paginate @load_tests, renderer: BootstrapPagination::Rails %>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>

@@ -1,0 +1,16 @@
+<%= line_chart load_test.schedule_graph_set, {
+        :discrete => true,
+        :height => '350px',
+        library:
+                {
+                        :title => 'Load Test Schedule',
+                        curveType: 'none',
+                        hAxis: {
+                                title: 'Duration (Minutes)'
+                        },
+                        vAxis:
+                                {
+                                        title: 'Maximum Virtual Users'
+                                }
+                }
+} %>

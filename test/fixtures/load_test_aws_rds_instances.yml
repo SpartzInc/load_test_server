@@ -1,0 +1,15 @@
+---
+one:
+  id: 1
+  load_test_id: 1
+  aws_rds_instance_id: 1
+  metric: BinLogDiskUsage
+  created_at: 2015-09-26 22:19:48.000000000 Z
+  updated_at: 2015-09-26 22:19:48.000000000 Z
+two:
+  id: 2
+  load_test_id: 2
+  aws_rds_instance_id: 2
+  metric: WriteThroughput
+  created_at: 2015-09-26 22:20:55.000000000 Z
+  updated_at: 2015-09-26 22:20:55.000000000 Z

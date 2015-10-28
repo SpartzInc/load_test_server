@@ -1,0 +1,8 @@
+<div class="nested-fields input-group">
+  <%= f.text_field :name, class: 'form-control', :placeholder => 'Name' %>
+  <span class="input-group-btn" style="width:0px;"></span>
+  <%= f.text_field :db_instance_identifier, class: 'form-control', :placeholder => 'DB Instance Identifier', :style => 'margin-left:-1px' %>
+  <span class="input-group-btn">
+        <%= link_to_remove_association "Remove", f, :class => 'btn btn-danger', :style => 'margin-left:-2px' %>
+  </span>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+  <!-- custom version of edit action bar without show path bc this object doesn't particularly need a show page-->
+  <%#= render 'shared/edit_action_bar', title: 'Edit Custom host',
+             object: @custom_host, objects_path: custom_hosts_path %>
+
+  <div class="page-header">
+    <div class="pull-right">
+      <%#= link_to 'Show', object, :class => 'btn btn-info' %>
+      <%= link_to 'All', custom_hosts_path, :class => 'btn btn-success' %>
+    </div>
+    <h2>Edit Custom Host</h2>
+
+    <div class="clearfix"></div>
+  </div>
+  <%= render 'form' %>
+
+</div>
+

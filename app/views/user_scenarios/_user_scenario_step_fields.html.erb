@@ -1,0 +1,69 @@
+<% if f.object.request_type %>
+    <% default_request_type = f.object.request_type %>
+<% else %>
+    <% default_request_type = 'GET' %>
+<% end %>
+
+<div class="panel panel-default nested-fields">
+  <div class="panel-heading clearfix">
+    <div class="pull-right">
+      <%= link_to_remove_association "Remove", f, :class => 'btn-sm btn-danger' %>
+    </div>
+    <h4 class="panel-title pull-left">
+      <a class="accordion-toggle" data-toggle="collapse-next" data-parent="#user_scenario_steps">
+        Step #<span class="step_number"><%= f.object.step_order ||= 1 %></span>
+      </a>
+    </h4>
+  </div>
+  <div class="panel-collapse collapse">
+    <div class="panel-body">
+      <div class="request_form">
+        <div class="form-group field">
+          <%= f.label :request_type, 'Request Type/URL', class: 'control-label col-sm-3' %>
+          <div class="col-sm-9">
+            <div class="input-group below24 bias-input-group">
+              <div class="input-group-btn bs-dropdown-to-select-group">
+                <button type="button" class="btn btn-default dropdown-toggle as-is bs-dropdown-to-select" data-toggle="dropdown" tabindex="-1">
+                    <span data-bind="bs-drp-sel-label">
+                        <%= default_request_type %>
+                    </span>
+
+                  <%= f.hidden_field :request_type, :data => {:bind => 'bs-drp-sel-value'}, :value => default_request_type %>
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu" style=" max-height: 300px; overflow: scroll; overflow-y: scroll; overflow-x: hidden; ">
+                  <!-- Loop -->
+                  <li data-value="GET"><a href="#">GET</a></li>
+                  <li data-value="POST"><a href="#">POST</a></li>
+                  <!-- END Loop -->
+                </ul>
+              </div>
+
+              <%= f.text_field :request_url, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-3">Request Params</label>
+
+          <div class="col-sm-9">
+            <div class="scenario_step_request_params">
+              <%= f.fields_for :scenario_step_request_params do |scenario_step_request_param| %>
+                  <%= render 'scenario_step_request_param_fields', f: scenario_step_request_param %>
+              <% end %>
+            </div>
+            <%= link_to_add_association 'Add', f, :scenario_step_request_params,
+                                        'data-association-insertion-method' => :append,
+                                        'data-association-insertion-node' => '.scenario_step_request_params',
+                                        :class => 'btn btn-default' %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <%= f.hidden_field :step_order, class: 'form-control step_order' %>
+  </div>
+</div>

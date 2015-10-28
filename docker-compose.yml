@@ -1,0 +1,65 @@
+proxy:
+  image: jwilder/nginx-proxy:latest
+  ports:
+    - "80:80"
+  volumes:
+    - "/var/run/docker.sock:/tmp/docker.sock"
+db:
+  image: mysql:5.7.7
+  volumes_from:
+    - dbdata
+  environment:
+    MYSQL_ROOT_PASSWORD: ${LTS_DATABASE_PASS_DEV}
+  ports:
+    - "3306:3306"
+dbdata:
+  image: mysql:5.7.7
+  command: /bin/echo mysql Data container
+redis:
+  image: redis
+cache:
+  image: memcached
+web:
+  build: .
+  command: bundle exec unicorn -E ${LTS_RAILS_ENV} -c config/unicorn_docker.rb
+  environment:
+    LTS_DATABASE_HOST_DEV: ${LTS_DATABASE_HOST_DEV}
+    LTS_DATABASE_USER_DEV: ${LTS_DATABASE_USER_DEV}
+    LTS_DATABASE_PASS_DEV: ${LTS_DATABASE_PASS_DEV}
+
+    LTS_DATABASE_HOST_PROD: ${LTS_DATABASE_HOST_PROD}
+    LTS_DATABASE_USER_PROD: ${LTS_DATABASE_USER_PROD}
+    LTS_DATABASE_PASS_PROD: ${LTS_DATABASE_PASS_PROD}
+
+    LTS_SECRET_KEY_BASE: ${LTS_SECRET_KEY_BASE}
+    LTS_DEVISE_SECRET_KEY: ${LTS_DEVISE_SECRET_KEY}
+    LTS_ENCRYPTION_KEY: ${LTS_ENCRYPTION_KEY}
+
+    VIRTUAL_HOST: ${LTS_VIRTUAL_HOST}
+    RAILS_ENV: ${LTS_RAILS_ENV}
+  links:
+    - db
+    - redis
+    - cache
+worker:
+  build: .
+  command: bundle exec rake jobs:work
+  environment:
+    LTS_DATABASE_HOST_DEV: ${LTS_DATABASE_HOST_DEV}
+    LTS_DATABASE_USER_DEV: ${LTS_DATABASE_USER_DEV}
+    LTS_DATABASE_PASS_DEV: ${LTS_DATABASE_PASS_DEV}
+
+    LTS_DATABASE_HOST_PROD: ${LTS_DATABASE_HOST_PROD}
+    LTS_DATABASE_USER_PROD: ${LTS_DATABASE_USER_PROD}
+    LTS_DATABASE_PASS_PROD: ${LTS_DATABASE_PASS_PROD}
+
+    LTS_SECRET_KEY_BASE: ${LTS_SECRET_KEY_BASE}
+    LTS_DEVISE_SECRET_KEY: ${LTS_DEVISE_SECRET_KEY}
+    LTS_ENCRYPTION_KEY: "${LTS_ENCRYPTION_KEY}"
+
+    VIRTUAL_HOST: ${LTS_VIRTUAL_HOST}
+    RAILS_ENV: ${LTS_RAILS_ENV}
+  links:
+    - db
+    - redis
+    - cache

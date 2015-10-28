@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  port: 3306
+
+development: &development
+  <<: *default
+  database: load_test_server_dev
+  host: <%= ENV['LTS_DATABASE_HOST_DEV'] %>
+  username: <%= ENV['LTS_DATABASE_USER_DEV'] %>
+  password: <%= ENV['LTS_DATABASE_PASS_DEV'] %>
+
+test:
+  <<: *development
+  database: load_test_server_test
+
+production:
+  <<: *default
+  database: load_test_server
+  host: <%= ENV['LTS_DATABASE_HOST_PROD'] %>
+  username: <%= ENV['LTS_DATABASE_USER_PROD'] %>
+  password: <%= ENV['LTS_DATABASE_PASS_PROD'] %>

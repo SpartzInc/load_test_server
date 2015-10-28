@@ -1,0 +1,34 @@
+<%= form_for(@user, html: {:class => "form-horizontal", :role => 'form'}) do |f| %>
+  <%= render 'shared/form_error_message', object: @user %>
+
+  <div class="form-group">
+    <%= f.label :email, class: 'col-sm-4 control-label' %>
+    <div class="col-sm-4">
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, class: 'col-sm-4 control-label' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, class: 'col-sm-4 control-label' %>
+    <div class="col-sm-4">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4">&nbsp;</div>
+    <div class="col-sm-4">
+      <%= render 'shared/form_action_bar', f: f %>
+    </div>
+  </div>
+<% end %>
+
+
+

@@ -1,0 +1,18 @@
+<%= line_chart test_result.response_times_graph_set,
+               {
+                       :discrete => true,
+                       :height => '350px',
+                       library:
+                               {
+                                       title: 'Response Times Average Over Time',
+                                       curveType: 'none',
+                                       hAxis: {
+                                               title: 'Time'
+                                       },
+                                       vAxis:
+                                               {
+                                                       title: 'Response Time Average (seconds)'
+                                               }
+                               }
+               }
+%>

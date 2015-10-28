@@ -1,0 +1,18 @@
+<%= column_chart test_result.response_codes_graph_set,
+               {
+                       :discrete => true,
+                       :height => '350px',
+                       library:
+                               {
+                                       title: 'Response Codes Sum Over Time',
+                                       curveType: 'none',
+                                       hAxis: {
+                                               title: 'Time'
+                                       },
+                                       vAxis:
+                                               {
+                                                       title: 'Sum of Occurrences'
+                                               }
+                               }
+               }
+%>

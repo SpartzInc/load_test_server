@@ -1,0 +1,57 @@
+<div class="container">
+  <%= render 'shared/show_action_bar', title: 'Show Test Schedule',
+             objects_path: test_schedules_path,
+             edit_object_path: false %>
+
+  <p>
+    <strong>Load test:</strong>
+    <%= link_to @test_schedule.load_test.name, @test_schedule.load_test %>
+  </p>
+
+  <p>
+    <strong>Scheduled At:</strong>
+    <%= @test_schedule.run_test_at %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <% case @test_schedule.status %>
+    <% when :complete %>
+        <button type="button" class="btn btn-success">Complete</button>
+    <% when :cancelled %>
+        <button type="button" class="btn btn-warning">Cancelled</button>
+    <% when :waiting %>
+        <button type="button" class="btn btn-info">Waiting</button>
+    <% when :in_progress %>
+        <button type="button" class="btn btn-info">In Progress</button>
+    <% when :failed %>
+        <button type="button" class="btn btn-danger">Failed</button>
+    <% else %>
+        <button type="button" class="btn btn-info"><%= @test_schedule.status %></button>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Test Result:</strong>
+    <% if @test_schedule.test_result %>
+        <%= link_to @test_schedule.formatted_name, @test_schedule.test_result %>
+    <% else %>
+        No Test Results
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Failed Message:</strong>
+    <%= @test_schedule.failed_message %>
+  </p>
+
+  <p>
+    <strong>Start Time:</strong>
+    <%= @test_schedule.start_time %>
+  </p>
+
+  <p>
+    <strong>End Time:</strong>
+    <%= @test_schedule.end_time %>
+  </p>
+</div>

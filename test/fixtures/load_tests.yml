@@ -1,0 +1,13 @@
+---
+one:
+  id: 1
+  user_scenario_id: 1
+  name: Load Test 1
+  created_at: 2015-09-26 22:19:48.000000000 Z
+  updated_at: 2015-09-26 22:19:48.000000000 Z
+two:
+  id: 2
+  user_scenario_id: 2
+  name: Load Test 2
+  created_at: 2015-09-26 22:20:55.000000000 Z
+  updated_at: 2015-09-26 22:20:55.000000000 Z

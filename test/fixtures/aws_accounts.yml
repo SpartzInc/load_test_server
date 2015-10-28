@@ -1,0 +1,15 @@
+---
+one:
+  id: 1
+  name: Test AWS Account 1
+  encrypted_access_key_id: QEVuQwBAEACNKWWjEunRv1FkXEr5xFS6XgxsxSpC0SDV3oG4wBdfdA==
+  encrypted_secret_access_key: QEVuQwBAEADwZolpbSJvp2nRRMbN4YM2fGncILE6Qqsnu6hcp+4/OIy63kmTjiEgVpsTeJhdOWA=
+  created_at: 2015-09-26 22:14:04.000000000 Z
+  updated_at: 2015-09-26 22:14:04.000000000 Z
+two:
+  id: 2
+  name: Test AWS Account 2
+  encrypted_access_key_id: QEVuQwBAEACv27UHod1BfUWn/ClA466QwO5+Rpvad7M2F2DA/gi3kg==
+  encrypted_secret_access_key: QEVuQwBAEACKhMGpNifDgfWvYpm0wczKIlobDNc+NKyTw//upNPpNzXvcFw+SlB/Vx/4T4BMOgI=
+  created_at: 2015-09-26 22:15:10.000000000 Z
+  updated_at: 2015-09-26 22:15:10.000000000 Z

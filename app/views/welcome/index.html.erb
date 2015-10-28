@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="page-header">
+    <h2>Welcome</h2>
+  </div>
+
+  <p>
+    LoadTestServer allows for user scenarios to be carried out in parallel
+    and control the level of load against a target.
+  </p>
+
+  <ul class="list-unstyled">
+    <li><strong>Tests</strong>
+      <ul>
+        <li><%= link_to 'Load Tests', load_tests_path %>
+          <ul>
+            <li>Manage load tests in this section</li>
+          </ul>
+        </li>
+        <li><%= link_to 'User Scenarios', user_scenarios_path %>
+          <ul>
+            <li>Manage user scenarios and steps for load tests in this section</li>
+          </ul>
+        </li>
+        <li><%= link_to 'Test Schedules', test_schedules_path %>
+          <ul>
+            <li>Schedule load tests in this section</li>
+          </ul>
+        </li>
+        <li><%= link_to 'Test Results', test_results_path %>
+          <ul>
+            <li>Results from scheduled tests will be populated in this section</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><%= link_to 'Custom Hosts', custom_hosts_path %>
+      <ul>
+        <li>Manage the server's system /etc/hosts file</li>
+      </ul>
+    </li>
+    <li><%= link_to 'AWS Accounts', aws_accounts_path %>
+      <ul>
+        <li>Manage saved AWS accounts, api keys, and RDS/EC2 instances</li>
+      </ul>
+    </li>
+    <li><%= link_to 'Manage Users', users_path %>
+      <ul>
+        <li>Manage users who have access to this web app</li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,35 @@
+---
+one:
+  id: 1
+  priority: 0
+  attempts: 0
+  handler: "--- !ruby/struct:TestJob\ntest_schedule: !ruby/object:TestSchedule\n  attributes:\n
+    \   id: 1\n    load_test_id: 1\n    schedule_now: true\n    schedule_at: \n    started:
+    false\n    complete: false\n    failed: false\n    failed_message: \n    cancelled:
+    false\n    start_time: \n    end_time: \n    created_at: &1 2015-09-26 22:21:19.883565000
+    Z\n    updated_at: *1\n"
+  last_error: 
+  run_at: 2015-09-26 22:21:20.000000000 Z
+  locked_at: 2015-09-26 22:21:20.000000000 Z
+  failed_at: 
+  locked_by: delayed_job host:MacBook-Pro.local pid:15249
+  queue: 
+  created_at: 2015-09-26 22:21:20.000000000 Z
+  updated_at: 2015-09-26 22:21:20.000000000 Z
+two:
+  id: 2
+  priority: 0
+  attempts: 0
+  handler: "--- !ruby/struct:TestJob\ntest_schedule: !ruby/object:TestSchedule\n  attributes:\n
+    \   id: 2\n    load_test_id: 2\n    schedule_now: true\n    schedule_at: \n    started:
+    false\n    complete: false\n    failed: false\n    failed_message: \n    cancelled:
+    false\n    start_time: \n    end_time: \n    created_at: &1 2015-09-26 22:21:28.267418000
+    Z\n    updated_at: *1\n"
+  last_error: 
+  run_at: 2015-09-26 22:21:28.000000000 Z
+  locked_at: 
+  failed_at: 
+  locked_by: 
+  queue: 
+  created_at: 2015-09-26 22:21:28.000000000 Z
+  updated_at: 2015-09-26 22:21:28.000000000 Z

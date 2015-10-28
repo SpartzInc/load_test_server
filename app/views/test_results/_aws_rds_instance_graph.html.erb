@@ -1,0 +1,17 @@
+<%= line_chart test_result_aws_rds_instance.graph_set,
+               {
+                       :discrete => true,
+                       library:
+                               {
+                                       title: 'AWS RDS: ' + test_result_aws_rds_instance.formatted_name,
+                                       curveType: 'none',
+                                       hAxis: {
+                                               title: 'Date Time Occurred'
+                                       },
+                                       vAxis:
+                                               {
+                                                       title: test_result_aws_rds_instance.metric
+                                               }
+                               }
+               }
+%>

@@ -1,0 +1,15 @@
+---
+one:
+  id: 1
+  load_test_id: 1
+  maximum_virtual_users: 30
+  duration: 5
+  created_at: 2015-09-26 22:19:48.000000000 Z
+  updated_at: 2015-09-26 22:19:48.000000000 Z
+two:
+  id: 2
+  load_test_id: 2
+  maximum_virtual_users: 30
+  duration: 5
+  created_at: 2015-09-26 22:19:48.000000000 Z
+  updated_at: 2015-09-26 22:19:48.000000000 Z

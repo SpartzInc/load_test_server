@@ -1,0 +1,15 @@
+---
+one:
+  id: 1
+  user_scenario_step_id: 1
+  request_key: dummy_value
+  request_value: test
+  created_at: 2015-09-26 22:17:16.000000000 Z
+  updated_at: 2015-09-26 22:17:16.000000000 Z
+two:
+  id: 2
+  user_scenario_step_id: 2
+  request_key: nothing
+  request_value: test
+  created_at: 2015-09-26 22:17:16.000000000 Z
+  updated_at: 2015-09-26 22:17:16.000000000 Z

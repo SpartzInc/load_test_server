@@ -1,0 +1,155 @@
+<div class="container">
+  <%= render 'shared/show_action_bar', title: 'Show Load Test',
+             objects_path: load_tests_path,
+             edit_object_path: edit_load_test_path %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">User Scenario: <%= link_to @load_test.user_scenario.name, @load_test.user_scenario %></h3>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Request Type</th>
+        <th>Request URL</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @load_test.user_scenario.user_scenario_steps.count > 0 %>
+        <% @load_test.user_scenario.user_scenario_steps.each_with_index do |user_scenario_step, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+              <td><%= user_scenario_step.request_type %></td>
+              <td>
+                <%= truncate user_scenario_step.request_url, :length => 25, :separator => /\w/,
+                             :omission => '...' %>
+              </td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Load Test Schedules</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Max Virtual Users</th>
+            <th>Duration (Minutes)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if @load_test.load_test_schedules.count > 0 %>
+            <% @load_test.load_test_schedules.each_with_index do |load_test_schedule, index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= load_test_schedule.maximum_virtual_users %></td>
+                <td><%= load_test_schedule.duration %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="2">None</td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <%= line_chart @load_test.schedule_graph_set, {
+          :discrete => true,
+          :height => '200px',
+          library:
+            {
+              curveType: 'none',
+              hAxis: {
+                      title: 'Duration (Minutes)'
+              },
+              vAxis:
+                {
+                  title: 'Maximum Virtual Users'
+                }
+            }
+        } %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">AWS EC2 Server Metrics</h3>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Instance ID</th>
+        <th>Metric</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @load_test.load_test_aws_ec2_instances.count > 0 %>
+        <% @load_test.load_test_aws_ec2_instances.each do |load_test_aws_ec2_instance| %>
+          <tr>
+            <td>
+              <%= link_to load_test_aws_ec2_instance.aws_ec2_instance.full_name, load_test_aws_ec2_instance.aws_ec2_instance.aws_account %>
+            </td>
+            <td><%= load_test_aws_ec2_instance.aws_ec2_instance.instance_id %></td>
+            <td><%= load_test_aws_ec2_instance.metric %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="2">None</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">AWS RDS Server Metrics</h3>
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>DB Instance Identifier</th>
+        <th>Metric</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if @load_test.load_test_aws_rds_instances.count > 0 %>
+        <% @load_test.load_test_aws_rds_instances.each do |load_test_aws_rds_instance| %>
+          <tr>
+            <td>
+              <%= link_to load_test_aws_rds_instance.aws_rds_instance.full_name, load_test_aws_rds_instance.aws_rds_instance.aws_account %>
+            </td>
+            <td><%= load_test_aws_rds_instance.aws_rds_instance.db_instance_identifier %></td>
+            <td><%= load_test_aws_rds_instance.metric %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="2">None</td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

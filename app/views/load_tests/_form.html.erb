@@ -1,0 +1,75 @@
+<%= form_for(@load_test, html: {:class => "form-horizontal", :role => 'form'}) do |f| %>
+    <%= render 'shared/form_error_message', object: @load_test %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'control-label col-sm-2' %>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :user_scenario_id, class: 'control-label col-sm-2' %>
+      <div class="col-sm-6">
+        <%= f.collection_select(:user_scenario_id, UserScenario.all, :id, :name, {:prompt => 'Please Select User Scenario'}, {:class => 'form-control'}) %>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">Load Test Schedules</label>
+
+      <div class="col-sm-5">
+        <div class="load_test_schedules">
+          <%= f.fields_for :load_test_schedules do |load_test_schedule| %>
+              <%= render 'load_test_schedule_fields', f: load_test_schedule %>
+          <% end %>
+        </div>
+        <%= link_to_add_association 'Add', f, :load_test_schedules,
+                                    'data-association-insertion-method' => :append,
+                                    'data-association-insertion-node' => '.load_test_schedules',
+                                    :class => 'btn btn-default' %>
+      </div>
+      <div class="col-sm-5">
+        <div id="load_test_schedule_chart" style="height: 200px;"></div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">AWS EC2 Server Metrics</label>
+
+      <div class="col-sm-10">
+        <div class="load_test_aws_ec2_instances">
+          <%= f.fields_for :load_test_aws_ec2_instances do |load_test_aws_ec2_instance| %>
+              <%= render 'load_test_aws_ec2_instance_fields', f: load_test_aws_ec2_instance %>
+          <% end %>
+        </div>
+        <%= link_to_add_association 'Add', f, :load_test_aws_ec2_instances,
+                                    'data-association-insertion-method' => :append,
+                                    'data-association-insertion-node' => '.load_test_aws_ec2_instances',
+                                    :class => 'btn btn-default' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2">AWS RDS Server Metrics</label>
+
+      <div class="col-sm-10">
+        <div class="load_test_aws_rds_instances">
+          <%= f.fields_for :load_test_aws_rds_instances do |load_test_aws_rds_instance| %>
+              <%= render 'load_test_aws_rds_instance_fields', f: load_test_aws_rds_instance %>
+          <% end %>
+        </div>
+        <%= link_to_add_association 'Add', f, :load_test_aws_rds_instances,
+                                    'data-association-insertion-method' => :append,
+                                    'data-association-insertion-node' => '.load_test_aws_rds_instances',
+                                    :class => 'btn btn-default' %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    </div>
+<% end %>

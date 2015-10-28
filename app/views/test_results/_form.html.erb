@@ -1,0 +1,57 @@
+<%= form_for(@test_result, html: {:class => "form-horizontal", :role => 'form'}) do |f| %>
+  <%= render 'shared/form_error_message', object: @test_result %>
+
+  <div class="form-group">
+    <%= f.label :test_schedule_id, class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.collection_select(:test_schedule_id, TestSchedule.all.order('created_at DESC'), :id, :formatted_name, {:prompt => 'Please Select Test Schedule'}, {:class => 'form-control'}) %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :in_progress, class: 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.check_box :in_progress, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">AWS EC2 Instance Test Results</h3>
+    </div>
+
+    <ul id="test_result_aws_ec2_instances" class="list-group">
+      <%= f.fields_for :test_result_aws_ec2_instances do |test_result_aws_ec2_instance| %>
+        <%= render 'test_result_aws_ec2_instance_fields', f: test_result_aws_ec2_instance %>
+      <% end %>
+    </ul>
+
+    <div class="panel-footer">
+      <%= link_to_add_association 'Add', f, :test_result_aws_ec2_instances,
+                                  'data-association-insertion-method' => :append,
+                                  'data-association-insertion-node' => '#test_result_aws_ec2_instances',
+                                  :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">AWS RDS Instance Test Results</h3>
+    </div>
+
+    <ul id="test_result_aws_rds_instances" class="list-group">
+      <%= f.fields_for :test_result_aws_rds_instances do |test_result_aws_rds_instance| %>
+        <%= render 'test_result_aws_rds_instance_fields', f: test_result_aws_rds_instance %>
+      <% end %>
+    </ul>
+
+    <div class="panel-footer">
+      <%= link_to_add_association 'Add', f, :test_result_aws_rds_instances,
+                                  'data-association-insertion-method' => :append,
+                                  'data-association-insertion-node' => '#test_result_aws_rds_instances',
+                                  :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+    <%= render 'shared/form_action_bar', f: f %>
+<% end %>

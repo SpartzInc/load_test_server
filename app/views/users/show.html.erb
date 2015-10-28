@@ -1,0 +1,7 @@
+<div class="container">
+  <%= render 'shared/show_action_bar', title: 'Show User',
+             objects_path: users_path,
+             edit_object_path: edit_user_path %>
+
+  <p><strong>Email:</strong> <%= @user.email %></p>
+</div>

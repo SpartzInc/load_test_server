@@ -1,0 +1,41 @@
+<li class="nested-fields list-group-item">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group field">
+        <%= f.label :aws_ec2_instance_id, 'AWS EC2 Instance', class: 'control-label col-sm-4' %>
+        <div class="col-sm-8">
+          <%= f.collection_select(:aws_ec2_instance_id, AwsEc2Instance.all, :id, :full_name, {:prompt => 'Please Select EC2 Instance'}, {:class => 'form-control'}) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group field">
+        <%= f.label :metric, class: 'control-label col-sm-4' %>
+        <div class="col-sm-8">
+          <%= f.select(:metric, AMAZON_METRICS['EC2'].map { |value| [value, value] }, {}, {:class => 'form-control'}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :start_time, class: 'control-label col-sm-4' %>
+        <div class="col-sm-8">
+          <%= f.datetime_select :start_time %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :end_time, class: 'control-label col-sm-4' %>
+        <div class="col-sm-8">
+          <%= f.datetime_select :end_time %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to_remove_association "Remove", f, :class => 'btn btn-default' %>
+</li>

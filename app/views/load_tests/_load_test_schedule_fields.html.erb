@@ -1,0 +1,8 @@
+<div class="nested-fields input-group">
+  <%= f.number_field :duration, class: 'form-control', :placeholder => 'Duration (Minutes)', min: 0 %>
+  <span class="input-group-btn" style="width:0px;"></span>
+  <%= f.number_field :maximum_virtual_users, class: 'form-control', :placeholder => 'Max Virtual Users', :style => 'margin-left:-1px', min: 0 %>
+  <span class="input-group-btn">
+        <%= link_to_remove_association "Remove", f, :class => 'btn btn-danger', :style => 'margin-left:-2px' %>
+  </span>
+</div>

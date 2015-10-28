@@ -1,0 +1,38 @@
+<div class="container">
+  <%= form_for(@custom_host, html: {:class => "form-horizontal", :role => 'form'}) do |f| %>
+      <%= render 'shared/form_error_message', object: @custom_host %>
+
+      <div class="form-group">
+        <%= f.label :hostname, class: 'control-label col-sm-2' %>
+        <div class="col-sm-6">
+          <%= f.text_field :hostname, class: 'form-control' %>
+        </div>
+      </div>
+
+
+
+      <hr/>
+
+      <div class="form-group">
+        <%= f.label :description, class: 'control-label col-sm-2' %>
+        <div class="col-sm-6">
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+      </div>
+
+      <hr/>
+
+      <div class="form-group">
+        <%= f.label :ip_address, "I.P. Address", class: 'control-label col-sm-2' %>
+        <div class="col-sm-6">
+          <%= f.text_field :ip_address, class: 'form-control' %>
+        </div>
+      </div>
+
+
+
+      <div class="actions">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>

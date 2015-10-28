@@ -1,0 +1,8 @@
+<div class="nested-fields input-group">
+  <%= f.collection_select(:aws_ec2_instance_id, AwsEc2Instance.all, :id, :full_name, {:prompt => 'Please Select EC2 Instance'}, {:class => 'form-control'}) %>
+  <span class="input-group-btn" style="width:0px;"></span>
+  <%= f.select(:metric, AMAZON_METRICS['EC2'].map { |value| [value, value] }, {:prompt => 'Please Select Metric'}, {:class => 'form-control', :style => 'margin-left:-1px'}) %>
+  <span class="input-group-btn">
+        <%= link_to_remove_association "Remove", f, :class => 'btn btn-danger', :style => 'margin-left:-2px' %>
+  </span>
+</div>

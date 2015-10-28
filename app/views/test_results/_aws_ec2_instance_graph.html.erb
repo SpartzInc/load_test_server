@@ -1,0 +1,17 @@
+<%= line_chart test_result_aws_ec2_instance.graph_set,
+               {
+                       :discrete => true,
+                       library:
+                               {
+                                       title: 'AWS EC2: ' + test_result_aws_ec2_instance.formatted_name,
+                                       curveType: 'none',
+                                       hAxis: {
+                                               title: 'Date Time Occurred'
+                                       },
+                                       vAxis:
+                                               {
+                                                       title: test_result_aws_ec2_instance.metric
+                                               }
+                               }
+               }
+%>

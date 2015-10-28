@@ -1,0 +1,99 @@
+<div class="container">
+  <%= render 'shared/show_action_bar', title: 'Show Test Result',
+             objects_path: test_results_path,
+             edit_object_path: false %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-4">
+          <p>
+            <strong>Test Schedule:</strong>
+          </p>
+        </div>
+        <div class="col-sm-8">
+          <p>
+            <%= link_to @test_result.test_schedule.formatted_name, @test_result.test_schedule %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <p>
+            <strong>Load test:</strong>
+          </p>
+        </div>
+        <div class="col-sm-8">
+          <p>
+            <%= link_to @test_result.test_schedule.load_test.name, @test_result.test_schedule.load_test %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4">
+          <p>
+            <strong>Results Status:</strong>
+          </p>
+        </div>
+        <div class="col-sm-8">
+          <% if @test_result.in_progress %>
+              <button type="button" class="btn btn-info">In Progress</button>
+          <% else %>
+              <button type="button" class="btn btn-success">Complete</button>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <p>
+            <strong>Average Response Time:</strong>
+          </p>
+        </div>
+        <div class="col-sm-8">
+          <p><%= number_to_human(@test_result.average_response_time) %>S</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <p>
+            <strong>Total Requests:</strong>
+          </p>
+        </div>
+        <div class="col-sm-8">
+          <p><%= number_to_human(@test_result.total_requests) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <%= render 'test_result_load_test_schedule_graph', load_test: @test_result.test_schedule.load_test %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <%= render 'response_time_graph', test_result: @test_result %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <%= render 'response_code_graph', test_result: @test_result %>
+    </div>
+  </div>
+
+  <% if @test_result.test_result_aws_ec2_instances.count > 0 %>
+      <% @test_result.test_result_aws_ec2_instances.each do |test_result_aws_ec2_instance| %>
+          <%= render 'aws_ec2_instance_graph', test_result_aws_ec2_instance: test_result_aws_ec2_instance %>
+      <% end %>
+  <% end %>
+
+  <% if @test_result.test_result_aws_rds_instances.count > 0 %>
+      <% @test_result.test_result_aws_rds_instances.each do |test_result_aws_rds_instance| %>
+          <%= render 'aws_rds_instance_graph', test_result_aws_rds_instance: test_result_aws_rds_instance %>
+      <% end %>
+  <% end %>
+</div>

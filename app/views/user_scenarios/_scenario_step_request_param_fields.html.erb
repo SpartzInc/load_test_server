@@ -1,0 +1,8 @@
+<div class="nested-fields input-group request_params">
+  <%= f.text_field :request_key, class: 'form-control', :placeholder => 'Key' %>
+  <span class="input-group-btn" style="width:0px;"></span>
+  <%= f.text_field :request_value, class: 'form-control', :placeholder => 'Value', :style => 'margin-left:-1px' %>
+  <span class="input-group-btn">
+        <%= link_to_remove_association "Remove", f, :class => 'btn btn-danger', :style => 'margin-left:-2px' %>
+  </span>
+</div>
